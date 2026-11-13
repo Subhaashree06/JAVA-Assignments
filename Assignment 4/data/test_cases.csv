@@ -1,0 +1,15 @@
+Task,Test,Input/interaction,Expected result,Verification in notebook
+1,T1,blank registration number,validation error,design + FeeService source
+1,T2,non-numeric/negative amount,validation error,design + FeeService source
+2,T1,Cardiology department,Cardiology doctor list,AppointmentDesk console
+2,T2,blank patient ID,required-field error,AppointmentDesk console
+3,T1,search term entered,results table populated,Swing source compiled
+3,T2,"resize 520x320, 760x480, 1100x700",centre results area resizes,desktop screenshot required
+4,T1,click at point,count increments and point stored,source compiled
+4,T2,minimise and restore,stored points redraw,source compiled; desktop screenshot required
+5,T1,1000 INR to USD,12.00 USD,ConverterLogic console
+5,T2,1000 INR to EUR,11.00 EUR,ConverterLogic console
+5,T3,abc amount,Invalid amount,ConverterLogic console
+6,T1,valid unique registration,row inserted,requires MySQL runtime
+6,T2,blank/invalid email,validation error,service source compiled
+6,T3,same student/event twice,unique constraint rejects duplicate,SQL constraint included; requires MySQL runtime

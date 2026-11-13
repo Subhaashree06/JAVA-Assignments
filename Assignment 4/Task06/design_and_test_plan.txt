@@ -1,0 +1,37 @@
+Stage 1 – Requirements
+Users: students/receptionists register students; committee members view, filter and export registrations.
+Screens: registration form and committee registration table; File menu provides refresh, CSV export and exit.
+Data: student ID, student name, event name, email, registration ID and creation time.
+Rules: required fields; valid email; one registration per student per event; database uniqueness is authoritative; GUI remains responsive during JDBC operations.
+
+Testable requirements
+1. Blank required fields are rejected with a clear message.
+2. Invalid email is rejected.
+3. A valid registration is inserted and displayed.
+4. A duplicate student/event pair is rejected by the database unique constraint.
+5. Filter returns only the selected event.
+6. Pagination requests at most 20 rows per page.
+7. JDBC calls execute in SwingWorker background threads.
+8. CSV export writes the currently displayed table rows.
+
+Stage 2 – Screen/event flow
+Launch → Registration form/table → Register → validation → JDBC insert in SwingWorker → success/error dialog/status → refresh current table page.
+Filter selection → Filter button → paged SELECT → JTable update.
+File → Export CSV → file chooser → CSV output.
+File → Exit → close application.
+
+Stage 3 – Critical decisions
+Validation is in RegistrationService, not in Swing component callbacks alone. Duplicate checking is enforced by UNIQUE(student_id,event_name) in MySQL so concurrent application instances cannot bypass it. DAO owns SQL/JDBC. SwingWorker keeps insert and SELECT work off the EDT; done() updates Swing components on the EDT.
+
+Stage 4 – Class layers
+EventRegistrationApp (Swing UI) → RegistrationService (validation/use cases) → RegistrationDAO (JDBC) → MySQL registrations table.
+Registration is the data model. Register handler captures form values and calls service in SwingWorker.doInBackground(); done() reports outcome and refreshes. Filter handler calls service.filter(event,20,page*20) in SwingWorker and replaces JTable rows in done().
+
+Stage 5 – Demonstration cases
+Normal: unique student ID + event + valid email → insert succeeds.
+Invalid: blank ID or malformed email → IllegalArgumentException shown; no insert.
+Duplicate: same student ID and event twice → MySQL unique constraint raises SQLException; error shown.
+Database configuration: EVENT_DB_URL, EVENT_DB_USER, EVENT_DB_PASSWORD environment variables. MySQL Connector/J must be on the runtime classpath.
+
+Alternative – load all 100,000 rows
+Loading all rows transfers and materialises O(N) records and uses O(N) model memory; startup latency and EDT stalls can be substantial if performed on EDT. Paging 20 rows uses O(P) table memory for page size P and transfers O(P) rows per page; database still performs query work and indexes improve filtering/order. SwingWorker prevents blocking the EDT. OFFSET pagination can become slower for large offsets; keyset pagination is a scalable alternative.

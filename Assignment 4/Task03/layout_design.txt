@@ -1,0 +1,18 @@
+Task 3.1 – Layout choices
+• JFrame uses BorderLayout: NORTH search row, CENTER scrollable results, SOUTH action/status region. CENTER receives remaining space and grows on resize.
+• Search row uses FlowLayout(LEFT), keeping components at preferred sizes.
+• Bottom action row uses FlowLayout(CENTER), keeping Prev/Next/Reserve at preferred sizes.
+• SOUTH wrapper uses BorderLayout so action row stays CENTER and status stays SOUTH.
+• JTable is placed in JScrollPane; the viewport expands with the CENTER region.
+
+Task 3.2 – Nested structure
+JFrame [BorderLayout]
+├── Search JPanel [FlowLayout LEFT] – NORTH
+├── JScrollPane(JTable) – CENTER
+└── South JPanel [BorderLayout] – SOUTH
+    ├── Actions JPanel [FlowLayout CENTER] – CENTER
+    └── Status JLabel – SOUTH
+
+Task 3.4 – Resize verification plan
+Run at 520×320, 760×480 and 1100×700. At each size capture the whole window. Expected: results viewport expands/shrinks with the frame; search controls and bottom buttons retain preferred dimensions; status remains visible below the action row.
+Alternative: GridBagLayout can express weighted CENTER growth but requires constraints and more setup. Absolute positioning uses fixed coordinates and does not adapt to resizing; controls overlap or leave gaps. Nested BorderLayout/FlowLayout layout work is approximately O(c) per layout pass for c components and uses O(p) additional panel/container objects. GridBagLayout also visits components/constraints (approximately O(c)), with more constraint state. Absolute positioning avoids constraint calculations but still has O(c) component placement and poor responsiveness. Number of containers is O(1) for the fixed nested design.

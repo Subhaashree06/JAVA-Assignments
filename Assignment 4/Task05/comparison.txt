@@ -1,0 +1,14 @@
+Task 5.1 – Four styles
+(a) Frame implements ActionListener: the frame is the listener; actionPerformed delegates to convert(). It can access fields directly but mixes view and handler responsibilities.
+(b) Named inner class: a reusable named Handler class implements ActionListener and can access enclosing fields. It is clearer when handler logic is substantial.
+(c) Anonymous inner class: handler is declared at registration. It can access enclosing fields but is less reusable and can become verbose.
+(d) Lambda: concise functional listener for the single-method ActionListener interface. It can access enclosing fields and is ideal for short actions.
+All versions register the same handler for the button and amount field (Enter key), display a dialog for success and invalid input, and use EXIT_ON_CLOSE for the frame.
+
+Task 5.2 – Change effort
+Adding Enter-key conversion requires registering the same handler on the JTextField in addition to the JButton. The frame listener and named/anonymous versions reuse their handler object; the lambda version reuses one ActionListener variable. Showing a dialog is one additional message-dialog call in convert() for each implementation.
+
+Task 5.3 – Comparison
+Readability: lambda is shortest; named inner class is clearest for complex logic; anonymous class is explicit but verbose; frame listener is simple for tiny examples but couples roles. Field access: all nested/anonymous/lambda handlers can access enclosing fields; frame listener accesses instance fields directly. Reuse: named inner class and shared Action object are easiest to reuse; lambda variable can be shared among triggers. For a large application, prefer a separate Action class or shared Action object to centralise enablement, icons, keyboard shortcuts and menu/button behaviour.
+
+Alternative: a method reference button.addActionListener(e -> convert()) or button.addActionListener(this::convert) shares the convert method. A single AbstractAction can be attached to a button, menu item and key binding. One shared Action object can replace multiple listener instances (O(1) handler objects per action), and adding a trigger is one registration operation. Separate listeners for k triggers may use O(k) listener objects; dispatch itself is O(1) for each registered listener callback. The assignment's k-comparison estimate applies to an if/else command chain; dedicated listeners avoid scanning k commands.
