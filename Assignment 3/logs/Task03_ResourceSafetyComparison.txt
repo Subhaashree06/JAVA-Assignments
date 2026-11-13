@@ -1,0 +1,4 @@
+Manual version: Injected read/processing failure before reader.close()
+Manual readers still open: 1
+Try-with-resources: Injected read/processing failure before normal completion
+Try-with-resources readers still open: 0

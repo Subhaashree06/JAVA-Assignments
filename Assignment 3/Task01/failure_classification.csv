@@ -1,0 +1,6 @@
+Failure point,Exception or throwable,Category,Handling location
+Non-numeric withdrawal amount,NumberFormatException,Unchecked exception,Caller catch
+Negative or zero amount,IllegalArgumentException,Unchecked exception,Caller catch
+Amount exceeds balance,IllegalStateException,Unchecked exception,Caller catch
+Card-reader file unavailable,CardReaderException wrapping FileNotFoundException,Checked exception,Caller catch
+JVM resource exhaustion,OutOfMemoryError or other Error,Error,Not caught as routine transaction failure

@@ -1,0 +1,16 @@
+Unnamed: 0,Q2,size,structure,operation,nanos
+0,Q2,1000,ArrayList,addEnd,431385
+1,Q2,1000,LinkedList,addEnd,174758
+2,Q2,1000,ArrayList,addFront,457401
+3,Q2,1000,LinkedList,addFront,541969
+4,Q2,1000,ArrayDeque,addFront,343005
+5,Q2,1000,ArrayList,insertRemoveMiddle,1366046
+6,Q2,1000,LinkedList,insertRemoveMiddle,14296278
+7,Q2,1000,ArrayList,getK,1162838
+8,Q2,1000,LinkedList,getK,37891846
+9,Q2,1000,ArrayList,iterate,926858
+10,Q2,1000,LinkedList,iterate,2842217
+11,Q2,5000,ArrayList,addEnd,277940
+12,Q2,5000,LinkedList,addEnd,191232
+13,Q2,5000,ArrayList,addFront,2325245
+14,Q2,5000,LinkedList,addFront,255547

@@ -1,0 +1,4 @@
+Manual error: Injected failure after store2
+Try-with-resources error: Injected failure after store2
+Manual output bytes: 24
+Safe output bytes: 24

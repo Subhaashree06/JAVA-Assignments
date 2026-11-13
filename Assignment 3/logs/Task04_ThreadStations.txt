@@ -1,0 +1,21 @@
+Run 1 station1 alive immediately? true
+Run 1 finish order: [2, 4, 1, 3]
+Run 2 station1 alive immediately? true
+Run 2 finish order: [3, 2, 4, 1]
+Run 3 station1 alive immediately? true
+Run 3 finish order: [3, 4, 1, 2]
+Run 4 station1 alive immediately? true
+Run 4 finish order: [1, 3, 2, 4]
+Run 5 station1 alive immediately? true
+Run 5 finish order: [3, 1, 4, 2]
+Run 6 station1 alive immediately? true
+Run 6 finish order: [1, 3, 2, 4]
+Run 7 station1 alive immediately? true
+Run 7 finish order: [3, 2, 1, 4]
+Run 8 station1 alive immediately? true
+Run 8 finish order: [3, 4, 1, 2]
+Run 9 station1 alive immediately? true
+Run 9 finish order: [4, 2, 3, 1]
+Run 10 station1 alive immediately? true
+Run 10 finish order: [4, 3, 2, 1]
+All stations completed after join().

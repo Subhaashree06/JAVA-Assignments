@@ -1,0 +1,4 @@
+Deadlock-prone ordering: Thread 1 locks wallet A then wallet B, while Thread 2 locks wallet B then wallet A.
+Prevention: assign each wallet a unique immutable ID and always acquire the lower-ID wallet before the higher-ID wallet.
+This removes circular wait, one of the four Coffman conditions. The other conditions are mutual exclusion, hold-and-wait and no pre-emption.
+Producer-consumer invariant: 0 <= count <= 5. put waits while count == 5; take waits while count == 0. Both methods use while because a thread must re-check the condition after waking and because wakeups may be spurious.

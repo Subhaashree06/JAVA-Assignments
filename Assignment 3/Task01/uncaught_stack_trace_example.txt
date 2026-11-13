@@ -1,0 +1,7 @@
+Illustrative uncaught trace for a non-numeric amount (line numbers depend on compilation):
+Exception in thread "main" java.lang.NumberFormatException: For input string: "abc"
+    at java.base/java.lang.Integer.parseInt(Integer.java:...)
+    at ATM.withdraw(ATMMain.java:...)
+    at ATMMain.main(ATMMain.java:...)
+
+Interpretation: the exception originates in Integer.parseInt, propagates through ATM.withdraw, and reaches main because this illustrative variant does not catch it. The line numbers are JVM/compiler-version dependent.
