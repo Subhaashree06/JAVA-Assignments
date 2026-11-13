@@ -1,9 +1,0 @@
-Java source files extracted from the submitted notebook:
-BufferBenchmark.java
-GrowthBenchmark.java
-JdbcBenchmarks.java
-LoginSecurity.java
-MigrationAndMetadata.java
-PassStore.java
-
-Output evidence images are in ../screenshots/ and benchmark charts are in ../results/.
