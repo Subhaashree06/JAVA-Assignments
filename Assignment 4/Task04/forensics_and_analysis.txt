@@ -1,0 +1,13 @@
+Task 4.1 – Defects
+The method is spelled mouseclicked, but MouseAdapter defines mouseClicked with a capital C. Java is case-sensitive, so the method does not override the listener callback and is never invoked. The label is never updated because the callback body never runs. Even if corrected, the code draws directly with getGraphics(), which is temporary and is not retained for future repaint operations.
+
+Task 4.2 – Failing interaction
+Click several times to draw dots, minimise the window, then restore it. The window system requests repainting; the previous direct getGraphics() drawings are not part of the component's persistent painting state, so the dots disappear.
+
+Task 4.3 – Repair
+The completed DrawPad stores each click as a Point, updates the label, calls repaint(), and redraws all stored points in paint(). Each dot is a 6×6 oval centred at the click coordinate.
+
+Task 4.4 – Prevention
+Adding @Override above the incorrectly spelled mouseclicked method makes the compiler report that the method does not override or implement a method from a supertype. This catches the typo before runtime.
+
+Complete-code alternative: A BufferedImage can be created at the component's current width and height. Each click draws into the image using Graphics2D; paint() copies the image to the screen. Repainting then copies one image (O(W×H) pixel transfer in the straightforward model, often accelerated), instead of redrawing n points in O(n). The point-list design stores O(n) Point objects; the image design stores O(W×H) pixels (approximately 4WH bytes for ARGB). The image must be recreated/rescaled when the window dimensions change.

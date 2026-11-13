@@ -1,0 +1,10 @@
+Unnamed: 0,Q1,workload,method,nanos
+0,Q1,1x10,StringPlus,40306
+1,Q1,1x10,StringBuilder,16203
+2,Q1,1x10,StringBuffer,18659
+3,Q1,1000x50,StringPlus,19896378
+4,Q1,1000x50,StringBuilder,10277660
+5,Q1,1000x50,StringBuffer,12653661
+6,Q1,3000x100,StringPlus,44643465
+7,Q1,3000x100,StringBuilder,20972140
+8,Q1,3000x100,StringBuffer,24562781

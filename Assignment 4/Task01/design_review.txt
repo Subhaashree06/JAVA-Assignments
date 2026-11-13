@@ -1,0 +1,18 @@
+Task 1.1 – Design deficiencies
+1. One listener owns unrelated actions, coupling UI events and business logic; changes become difficult to isolate.
+2. String values are compared with ==, which compares object references. Use "Pay".equals(e.getActionCommand()) or distinct listeners.
+3. Empty, non-numeric, negative and non-finite amounts are not validated; parsing may throw NumberFormatException.
+4. JDBC work runs on the event-dispatch thread (EDT), so the window freezes while the database responds.
+5. Thread.sleep(3000) on the EDT freezes repainting and input for three seconds.
+6. The Receipt button is not implemented as a receipt action; it falls into the clear branch.
+7. SQL is built by concatenation, allowing SQL injection and quoting errors. Use PreparedStatement.
+8. The connection and statement are not closed, risking resource leaks.
+9. There is no window-closing policy or explicit resource lifecycle.
+10. SQLException and InterruptedException are not handled or reported to the user.
+11. No success/failure feedback is shown in the window; System.out is not useful feedback for the receptionist.
+
+Task 1.2 – Repaired structure
+FeeWindow (Swing view) collects fields and displays status/dialogs. FeeService validates and performs payment. The database operation uses PreparedStatement and try-with-resources. For a production application, call FeeService from SwingWorker.doInBackground() and update status in done(), keeping JDBC off the EDT.
+
+Task 1.3 – Design defence (under 100 words)
+The view only manages components and user interaction, while FeeService owns validation and payment rules. Each class has one responsibility, so validation can be tested without opening a window and the interface can change without rewriting database logic. PreparedStatement prevents SQL injection, and try-with-resources closes JDBC resources reliably. Separate listeners make each action explicit. A SwingWorker keeps slow database operations off the event-dispatch thread, preserving responsiveness.

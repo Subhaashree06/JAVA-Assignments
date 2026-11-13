@@ -1,0 +1,15 @@
+--- Test A100 ---
+Withdrawal successful: 500; Balance: 4500.0
+ATM transaction cleanup completed.
+--- Test A101 ---
+ATM transaction cleanup completed.
+Caught: NumberFormatException - For input string: "abc"
+--- Test A102 ---
+ATM transaction cleanup completed.
+Caught: IllegalArgumentException - Amount must be positive
+--- Test A103 ---
+ATM transaction cleanup completed.
+Caught: IllegalStateException - Insufficient balance
+--- Test A104 ---
+ATM transaction cleanup completed.
+Caught: CardReaderException - Card reader unavailable: card-reader.dat missing

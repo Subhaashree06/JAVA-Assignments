@@ -1,0 +1,2 @@
+Sum of tokens collected: 210 (expected 210)
+Wallet total: 2000

@@ -1,0 +1,44 @@
+Task 2.1 – Event model
+Source | Event object | Listener | Action
+Department JComboBox | ItemEvent | ItemListener | Replace doctor choices for selected department.
+Doctor JComboBox | ItemEvent | ItemListener | Store selected doctor and validate selection.
+Time-slot JComboBox | ItemEvent | ItemListener | Store selected slot.
+Book JButton | ActionEvent | ActionListener | Validate fields, book appointment, show confirmation/error.
+Window | WindowEvent | WindowListener/WindowAdapter | If booking is in progress, ask before closing; otherwise dispose.
+Patient ID JTextField | ActionEvent | ActionListener (optional) | Move focus to department selection.
+
+Task 2.2 – Component hierarchy
+JFrame AppointmentDesk
+└── JPanel (BorderLayout)
+    ├── JPanel NORTH (GridLayout 4x2): patient ID JLabel/JTextField, department JLabel/JComboBox, doctor JLabel/JComboBox, slot JLabel/JComboBox
+    ├── JPanel CENTER: instructions/status JLabel or appointment summary JTextArea
+    └── JPanel SOUTH (FlowLayout): Book JButton, Clear JButton
+
+Task 2.3 – Handler pseudocode
+REFRESH_DOCTORS:
+  department ← selected department
+  doctorCombo.removeAllItems()
+  FOR EACH doctor IN doctorsByDepartment.get(department)
+      doctorCombo.addItem(doctor)
+  END FOR
+  IF doctorCombo.getItemCount() = 0 THEN disable Book
+  ELSE select first doctor and enable Book
+  END IF
+
+BOOK_APPOINTMENT:
+  IF patientID is blank THEN show validation error; RETURN
+  IF department, doctor or slot is not selected THEN show validation error; RETURN
+  bookingInProgress ← TRUE
+  disable Book
+  result ← AppointmentService.book(patientID, department, doctor, slot)
+  show confirmation(result)
+  bookingInProgress ← FALSE
+  enable Book
+  ON failure show error and set bookingInProgress ← FALSE
+
+Task 2.4 – Event trace
+main → SwingUtilities.invokeLater → construct JFrame → initialise components/listeners → pack/setSize → setVisible(true) → user event enters EDT → listener method executes → service method executes → status/dialog updates → windowClosing event → ask confirmation if bookingInProgress → windowClosed/dispose.
+Applet comparison: init() initialises once; start() begins/restarts activity; paint() draws; stop() pauses activity; destroy() releases resources. A JFrame does not have this applet lifecycle; its construction, visibility and window events are managed by the application and AWT event queue.
+
+Alternative and complexity:
+With a preloaded Map, department lookup is expected O(1) plus O(r) to populate r doctors in the selected department; memory is O(D+M) for D departments and M total doctors. Fetching from a database on each change costs network/query latency plus O(r) result processing, and repeated queries add database load. It can reduce local cache memory to O(r) but introduces latency and failure handling on each change. Cache refresh/invalidation is needed if doctor data changes.
