@@ -1,1 +1,0 @@
-Assignment CO4 contains six task folders, source code, design explanations, pseudocode, SQL schema and console verification logs. Desktop-only interactions are identified in the test matrix and must be captured in a graphical desktop environment. The MySQL demonstration requires a configured MySQL server and Connector/J driver.
