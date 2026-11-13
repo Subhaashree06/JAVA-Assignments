@@ -1,0 +1,15 @@
+$ javac FeeDemo.java
+[0.001s][warning][os,container] Cgroup memory controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+[0.001s][warning][os,container] Cgroup cpu controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+
+
+$ java FeeDemo
+[0.001s][warning][os,container] Cgroup memory controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+[0.001s][warning][os,container] Cgroup cpu controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+TwoWheeler TN01A1 -> Rs 30.0
+Car TN02B2 -> Rs 90.0
+ElectricCar TN03C3 -> Rs 210.0
+true
+
+
+EXIT CODE: 0

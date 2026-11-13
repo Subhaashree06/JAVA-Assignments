@@ -1,0 +1,15 @@
+$ javac DesignChallenge.java
+[0.001s][warning][os,container] Cgroup memory controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+[0.001s][warning][os,container] Cgroup cpu controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+
+
+$ java DesignChallenge
+[0.001s][warning][os,container] Cgroup memory controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+[0.001s][warning][os,container] Cgroup cpu controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+Floors: 5
+E-bike flat fee: Rs 25.0
+Delivery van fee (2h entirely in 9-5): Rs 208.5
+Visitor day pass valid: true
+
+
+EXIT CODE: 0

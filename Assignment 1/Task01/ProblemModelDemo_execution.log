@@ -1,0 +1,9 @@
+$ javac ProblemModelDemo.java
+
+$ java ProblemModelDemo
+Candidate object: VehicleRecord
+Registration: TN01AB1234
+Vehicle type: Car
+Rule check: registration must be unique and slot must be free.
+
+EXIT CODE: 0

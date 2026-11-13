@@ -1,0 +1,17 @@
+$ javac SmartParkingSystem.java
+[0.001s][warning][os,container] Cgroup memory controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+[0.001s][warning][os,container] Cgroup cpu controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+
+
+$ java SmartParkingSystem
+[0.001s][warning][os,container] Cgroup memory controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+[0.001s][warning][os,container] Cgroup cpu controller path at '/sys/fs/cgroup' seems to have moved to '/../../jupyter-children', detected limits won't be accurate
+Tickets: 1001, 1002, 1003
+Bike fee (60 min): Rs 10.0
+Car fee (61 min): Rs 60.0
+EV fee (60 min + 5 kWh): Rs 90.0
+Daily collection: Rs 160.0
+Invalid exit handled: No active ticket
+
+
+EXIT CODE: 0

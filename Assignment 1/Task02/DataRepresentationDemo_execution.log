@@ -1,0 +1,9 @@
+$ javac DataRepresentationDemo.java
+
+$ java DataRepresentationDemo
+Jagged floors: 3
+Slots per floor: 20, 25, 30
+Entry time: 2026-11-13T09:00
+61 minutes billable hours: 2
+
+EXIT CODE: 0
